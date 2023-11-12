@@ -2,7 +2,8 @@ import { ADS_TYPE } from "../actions/types/adsType";
 
 export const INITIAL_STATE = {
     adsList: [],
-    selectAds: {}
+    selectAds: {},
+    searchAds: []
 }
 
 
@@ -12,14 +13,22 @@ export function adsReducer(state = INITIAL_STATE, action) {
         case ADS_TYPE.SET_ADS:
             return {
                 ...state,
-                adsList: action.payload
+                adsList: action.payload,
+                searchAds: action.payload
             }
         case ADS_TYPE.SET_SELECT_ADS:
 
             return {
                 ...state,
-                selectAds: action.payload
+                selectAds: action.payload,
             }
+        case ADS_TYPE.SET_SEARCH_ADS:
+
+            return {
+                ...state,
+                searchAds: action.payload
+            }
+
 
         default:
             return state;

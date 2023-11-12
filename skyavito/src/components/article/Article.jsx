@@ -2,28 +2,52 @@ import { useSelector } from "react-redux"
 import { getSelectList } from "../../store/selectors/AdsSelectors"
 import { ArticleImg } from "../articleImg/ArticleImg"
 import { ArticleUser } from "../articleUser/ArticleUser"
+import { RedactArticle } from '../redactArticle/RedactArticle'
 import * as S from './Article.Styled'
 import { Reviews } from "../reviews/Reviews"
 import { getSetCardComments } from "../../api"
-import { useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
+import { unstable_batchedUpdates } from "react-dom"
+import { useNavigate } from "react-router-dom"
 
 export const Article = () => {
 
+const navigate = useNavigate()
+
     const card = useSelector(getSelectList)
+    const cardId = useMemo(() => {
+        return card?.id
+    }, [card?.id])
 
     const [modal, setModal] = useState(true)
-    const [comments, setComments] = useState()
+    const [comments, setComments] = useState(null)
+    const [modalAds, setModalAds] = useState(true)
     const handModal = () => setModal(prev => !prev)
+    const handModalAds = () => setModalAds(prev => !prev)
 
-
-    const handleGetComments = (card) => {
-        getSetCardComments(card.id)
-            .then((cardComments) => {
-                console.log(cardComments)
-                setComments(cardComments)
-            })
+    const handleGetComments = () => {
         handModal()
+        navigate('./')
     }
+
+    useEffect(() => {
+        setComments(null)
+        updateComments()
+    }, [cardId])
+
+    const updateComments = () => {
+        if (cardId)
+            getSetCardComments(cardId)
+                .then((cardComments) => {
+                    console.log(cardComments)
+                    setComments(cardComments)
+                })
+    }
+
+
+
+
+
 
 
     return (
@@ -31,7 +55,7 @@ export const Article = () => {
             <S.MainArtic>
                 <S.ArticContent>
                     <ArticleImg card={card} />
-                    <ArticleUser handModal={handModal} card={card} handleGetComments={handleGetComments} />
+                    <ArticleUser handModal={handModal} card={card} handleGetComments={handleGetComments} comments={comments} handModalAds={handModalAds} />
                 </S.ArticContent>
             </S.MainArtic>
 
@@ -44,7 +68,9 @@ export const Article = () => {
                 </S.MainContant>
             </S.MainContainer>
 
-            <Reviews handModal={handModal} open={modal} comments={comments} />
+            <Reviews handModal={handModal} open={modal} comments={comments} updateComments={updateComments} />
+            <RedactArticle open={modalAds} card={card} handModalAds ={handModalAds}/>
+
         </>
 
     )

@@ -14,3 +14,10 @@ export const setSelectAds = (selectAds) => {
         payload: selectAds
     }
 }
+
+export const setSearchAds = (selectAds) => {
+    return {
+        type: ADS_TYPE.SET_SEARCH_ADS,
+        payload: selectAds
+    }
+}

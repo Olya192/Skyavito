@@ -100,6 +100,11 @@ export const ArticleButton = styled.button`
   }
   }
 `
+export const ArticleButtonDiv = styled.div`
+display: flex;
+    gap: 14px;
+    `
+
 export const ArticleAuthor = styled.div`
  margin-top: 34px;
   margin-bottom: 20px;

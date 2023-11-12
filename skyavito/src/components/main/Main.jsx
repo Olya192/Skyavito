@@ -3,16 +3,20 @@ import { getCards, getSetCard } from "../../api"
 import { CardsItem } from "../cards/CardsItem"
 import * as S from './Main.Styled'
 import { useNavigate } from 'react-router-dom'
-import { getAdsList } from "../../store/selectors/AdsSelectors"
+import { getAdsList, getSearchList } from "../../store/selectors/AdsSelectors"
 import { setSelectAds } from "../../store/actions/creators/adsCreators"
 import { useDispatch } from 'react-redux'
+import { useState } from "react"
 
 export function Main() {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const cards = useSelector(getAdsList)
     const setSelectedAds = (el) => dispatch(setSelectAds(el))
+    const searchedCards = useSelector(getSearchList)
+    console.log(searchedCards)
+
+
 
     const handleSelectedAds = (card) => {
         getSetCard(card.id)
@@ -24,6 +28,9 @@ export function Main() {
 
 
 
+
+
+
     return (
         <S.MainContainer>
 
@@ -32,7 +39,7 @@ export function Main() {
             <S.MainContent>
 
                 <S.ContentCards onClick={() => navigate('/article')}>
-                    {cards?.map((card, index) => (<CardsItem handleSelectedAds={handleSelectedAds} key={index} card={card} />))}
+                    {searchedCards?.map((card, index) => (<CardsItem handleSelectedAds={handleSelectedAds} key={index} card={card} />))}
                 </S.ContentCards>
             </S.MainContent>
 

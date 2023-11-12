@@ -5,3 +5,7 @@ export function getAdsList(store) {
 export function getSelectList(store) {
     return store.ads.selectAds
 }
+
+export function getSearchList(store) {
+    return store.ads.searchAds
+}

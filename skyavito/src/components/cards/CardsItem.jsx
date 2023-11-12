@@ -15,11 +15,11 @@ export const CardsItem = ({handleSelectedAds, card }) => {
                 </S.CardsImage>
                 <div class="card__content">
                     <Link to='#' onClick={() => handleSelectedAds(card)}>
-                        <S.CardTitle>{card.title}</S.CardTitle>
+                        <S.CardTitle>{card?.title}</S.CardTitle>
                     </Link>
-                    <S.CardPrise>{card.price}</S.CardPrise>
-                    <S.CardPlase>{card.city}</S.CardPlase>
-                    <S.CardDate>{card.created_on}</S.CardDate>
+                    <S.CardPrise>{card?.price}</S.CardPrise>
+                    <S.CardPlase>{card?.city}</S.CardPlase>
+                    <S.CardDate>{card?.created_on}</S.CardDate>
                 </div>
             </S.CardsCard>
         </S.CardsItem>

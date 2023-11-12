@@ -7,7 +7,7 @@ import { NewArticle } from '../newArticle/NewArticle'
 
 export function Header() {
     const navigate = useNavigate()
-    const user = false
+    const user =  localStorage.getItem("token")
     const [modal, setModal] = useState(true)
     
     const handModal= () => setModal(prev => !prev)
@@ -23,7 +23,7 @@ export function Header() {
                 }
                 </S.HeaderNav>
             </S.Header >
-           {user? <NewArticle handModal = {handModal} open={modal}/> :<Singing open={modal}/>} 
+           {user? <NewArticle handModal = {handModal} open={modal}/> :<Singing handModal = {handModal} open={modal}/>} 
             
         </>
     )

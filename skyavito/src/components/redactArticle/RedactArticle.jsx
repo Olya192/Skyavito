@@ -1,21 +1,27 @@
-import { useState } from 'react'
-import * as S from './NewArticle.Styled.js'
-import { postNewAds, postNewImgAds } from '../../api.js'
+import { useMemo, useState } from 'react'
+import * as S from './RedactArticle.Styled.js'
+import {patchRedactAds, postNewImgAds } from '../../api.js'
 
 
-export const NewArticle = ({ handModal, open }) => {
+export const RedactArticle = ({ handModalAds, open, card }) => {
 
-    
-
-    const [description, setDescription] = useState()
-    const [title, setTitle] = useState()
-    const [price, setPrice] = useState()
+    const [description, setDescription] = useState(card.description)
+    const [title, setTitle] = useState(card.title)
+    const [price, setPrice] = useState(card.price)
     const [images, setImages] = useState({})
     const [loading, setLoading] = useState(false)
 
-    const newCard = async () => {
+    const save = useMemo(() => {
+        if (title !== card.title || description !== card.description || price !== card.price || Object.keys(images).length > 0) {
+            return false
+        } else return true
+    }, [title, card.title, card.description, card.price, description, price, Object.keys(images).length])
+
+
+
+    const redactCard = async () => {
         setLoading(true)
-        const post = await postNewAds(title, description, price)
+        const post = await patchRedactAds(title, description, price, card.id)
         const keys = Object.keys(images)
         if (keys.length > 0) {
             for (const key in images) {
@@ -47,7 +53,7 @@ export const NewArticle = ({ handModal, open }) => {
             <S.ModalContent>
                 <S.ModalTitle>Новое объявление</S.ModalTitle>
                 <S.ModalBtnClose>
-                    <S.ModalBtnCloseLine onClick={handModal}></S.ModalBtnCloseLine>
+                    <S.ModalBtnCloseLine onClick={handModalAds}></S.ModalBtnCloseLine>
                 </S.ModalBtnClose>
                 <S.ModalForm id="formNewArt" action="#" onSubmit={(e) => e.preventDefault()}>
                     <S.FormNewArtBlock>
@@ -70,38 +76,38 @@ export const NewArticle = ({ handModal, open }) => {
                         <S.FormNewArtP>Фотографии товара<span>не более 5 фотографий</span></S.FormNewArtP>
                         <S.FormNewArtBarImg>
                             <S.FormNewArtImg >
-                                <img src={images['file-upload1'] ? URL.createObjectURL(images['file-upload1']) : ''} alt="" />
-                                <S.FormNewArtImgCover for="file-upload1"></S.FormNewArtImgCover>
+                                <img src={images['upload1'] ? URL.createObjectURL(images['upload1']) : ''} alt="" />
+                                <S.FormNewArtImgCover for="upload1"></S.FormNewArtImgCover>
                             </S.FormNewArtImg>
-                            <S.ImgCardInput id="file-upload1" name="photo" type="file" placeholder="" onChange={handleImg} />
+                            <S.ImgCardInput id="upload1" name="photo" type="file" placeholder="" onChange={handleImg} />
 
                             <S.FormNewArtImg >
-                            <img src={images['file-upload2'] ? URL.createObjectURL(images['file-upload2']) : ''} alt="" />
-                                <S.FormNewArtImgCover for="file-upload2"></S.FormNewArtImgCover>
+                                <img src={images['upload2'] ? URL.createObjectURL(images['upload2']) : ''} alt="" />
+                                <S.FormNewArtImgCover for="upload2"></S.FormNewArtImgCover>
                             </S.FormNewArtImg>
-                            <S.ImgCardInput id="file-upload2" name="photo" type="file" placeholder="" onChange={handleImg} />
+                            <S.ImgCardInput id="upload2" name="photo" type="file" placeholder="" onChange={handleImg} />
 
                             <S.FormNewArtImg>
-                                <S.FormNewArtImgCover for="file-upload3"></S.FormNewArtImgCover>
-                                <img src={images['file-upload3'] ? URL.createObjectURL(images['file-upload3']) : ''} alt="" />
+                                <S.FormNewArtImgCover for="upload3"></S.FormNewArtImgCover>
+                                <img src={images['upload3'] ? URL.createObjectURL(images['upload3']) : ''} alt="" />
                             </S.FormNewArtImg>
-                            <S.ImgCardInput id="file-upload3" name="photo" type="file" placeholder="" onChange={handleImg} />
+                            <S.ImgCardInput id="upload3" name="photo" type="file" placeholder="" onChange={handleImg} />
 
                             <S.FormNewArtImg>
-                                <S.FormNewArtImgCover for="file-upload4"></S.FormNewArtImgCover>
-                                <img src={images['file-upload4'] ? URL.createObjectURL(images['file-upload4']) : ''} alt="" />
+                                <S.FormNewArtImgCover for="upload4"></S.FormNewArtImgCover>
+                                <img src={images['upload4'] ? URL.createObjectURL(images['upload4']) : ''} alt="" />
                             </S.FormNewArtImg>
-                            <S.ImgCardInput id="file-upload4" name="photo" type="file" placeholder="" onChange={handleImg}/>
+                            <S.ImgCardInput id="upload4" name="photo" type="file" placeholder="" onChange={handleImg} />
 
                             <S.FormNewArtImg>
-                                <S.FormNewArtImgCover for="file-upload5"></S.FormNewArtImgCover>
-                                <img src={images['file-upload5'] ? URL.createObjectURL(images['file-upload5']) : ''} alt="" />
+                                <S.FormNewArtImgCover for="upload5"></S.FormNewArtImgCover>
+                                <img src={images['upload5'] ? URL.createObjectURL(images['upload5']) : ''} alt="" />
                             </S.FormNewArtImg>
-                            <S.ImgCardInput id="file-upload5" name="photo" type="file" placeholder="" onChange={handleImg}/>
+                            <S.ImgCardInput id="upload5" name="photo" type="file" placeholder="" onChange={handleImg} />
 
                         </S.FormNewArtBarImg>
                     </S.FormNewArtBlock>
-                    <S.FormNewArtBlockPrise>
+                    <S.FormNewArtBlockPrise >
                         <label for="price">Цена</label>
                         <S.FormNewArtInputPrise type="text" name="price" id="formName"
                             value={price}
@@ -111,7 +117,7 @@ export const NewArticle = ({ handModal, open }) => {
                         <S.FormNewArtInputPriseCover></S.FormNewArtInputPriseCover>
                     </S.FormNewArtBlockPrise>
 
-                    <S.FormNewArtButton id="btnPublish" onClick={newCard} disabled = {loading}>{loading? 'Загружаем' :'Опубликовать'}</S.FormNewArtButton>
+                    <S.FormNewArtButton id="btnPublish" onClick={redactCard} disabled={loading || save}>{loading ? 'Загружаем' : 'Опубликовать'}</S.FormNewArtButton>
 
                 </S.ModalForm>
             </S.ModalContent>

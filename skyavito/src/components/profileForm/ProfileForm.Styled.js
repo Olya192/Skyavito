@@ -127,7 +127,9 @@ font-size: 16px;
   border: 1px solid #009EE4;
   &:hover {
   background-color: #0080C1;
-}
+  }
+  ${(props) => props.disabled && ` background-color: #d9d9d9; 
+  border-color: #d9d9d9`};
   @media screen and (max-width: 620px) {
     font-size: 16px;
     line-height: 1;

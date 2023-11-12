@@ -38,11 +38,22 @@ export const SettingsImg = styled.div`
     height: 132px;
   }
 `
-export const SettingsChange = styled(NavLink)`
+export const SettingsChange = styled.label`
   margin-top: 10px;
   margin-bottom: 30px;
   text-decoration: none;
   font-size: 16px;
   line-height: 24px;
   color: #009EE4;
+  cursor: pointer;
 `
+export const inputChange = styled.input`
+display: none;
+`
+export const AvatarImg = styled.img`
+    width: 170px;
+    height: 170px;
+    border-radius: 85px;
+`
+
+
