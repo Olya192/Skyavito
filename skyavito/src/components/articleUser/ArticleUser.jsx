@@ -7,11 +7,15 @@ import { deleteUserAds } from '../../api'
 
 export const ArticleUser = ({ handModal, card, comments, handModalAds }) => {
 
-    
-    const user = JSON.parse(localStorage.getItem("user") || '')
+    const navigate = useNavigate()
+
+    const user = localStorage.getItem("user") || ''
 
     const [myAds, setMyAds] = useState(false)
-    
+    const [phone, setPhone] = useState(false)
+
+    const openNumber = () => setPhone(prev => !prev)
+
     useEffect(() => {
         if (user?.id === card?.user?.id) {
             setMyAds(true)
@@ -29,11 +33,12 @@ export const ArticleUser = ({ handModal, card, comments, handModalAds }) => {
 
     const deleteAds = () => {
         deleteUserAds(card.id)
+        navigate('/')
     }
 
     console.log(comments)
 
-    const navigate = useNavigate()
+
 
     return (
         <S.ArticleRight>
@@ -47,8 +52,8 @@ export const ArticleUser = ({ handModal, card, comments, handModalAds }) => {
                 <S.ArticlePrice>{card?.price} ₽</S.ArticlePrice>
                 {myAds ? <S.ArticleButtonDiv><S.ArticleButton onClick={handModalAds}><span>Редактировать</span></S.ArticleButton>
                     <S.ArticleButton onClick={deleteAds}><span>Удалить обьявление</span></S.ArticleButton></S.ArticleButtonDiv> :
-                    <S.ArticleButton>Показать&nbsp;телефон
-                        <span>{card?.user?.phone}</span>
+                    <S.ArticleButton onClick={openNumber}>Показать&nbsp;телефон
+                        {phone? <span>{card?.user?.phone}</span> : <span>XXXXXXXXXXXX</span>}
                     </S.ArticleButton>
                 }
                 <S.ArticleAuthor>

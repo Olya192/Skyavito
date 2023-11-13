@@ -7,7 +7,7 @@ import * as S from './Article.Styled'
 import { Reviews } from "../reviews/Reviews"
 import { getSetCardComments } from "../../api"
 import { useEffect, useMemo, useState } from 'react'
-import { unstable_batchedUpdates } from "react-dom"
+
 import { useNavigate } from "react-router-dom"
 
 export const Article = () => {

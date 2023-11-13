@@ -9,12 +9,14 @@ export const Reviews = ({ handModal, open, comments, updateComments }) => {
 
     const [text, setText] = useState()
     const card = useSelector(getSelectList)
+    const user = localStorage.getItem("user") || ''
 
     const handleNewComments = () => {
         postNewCardComments(card.id, text)
             .then(() => updateComments())
 
     }
+
 
 
     return (
@@ -25,17 +27,22 @@ export const Reviews = ({ handModal, open, comments, updateComments }) => {
                     <S.ModalCloseLine onClick={handModal} ></S.ModalCloseLine>
                 </S.ModalClose>
                 <S.ModalScroll>
-                    <S.ModalFormNewArt id="formNewArt" action="#" onSubmit={(e)=>e.preventDefault()}>
-                        <S.FormNewArtBlock>
-                            <label for="text" >Добавить отзыв</label>
-                            <S.FormNewArtTextarea name="text" id="formArea" cols="auto" rows="5" placeholder="Введите описание"
-                                value={text}
-                                onChange={(event) => {
-                                    setText(event.target.value);
-                                }}></S.FormNewArtTextarea>
-                        </S.FormNewArtBlock>
-                        <S.FormNewArtButton id="btnPublish" onClick={handleNewComments}>Опубликовать</S.FormNewArtButton>
-                    </S.ModalFormNewArt>
+                    {user ?
+
+                        <S.ModalFormNewArt id="formNewArt" action="#" onSubmit={(e) => e.preventDefault()} >
+                            <S.FormNewArtBlock>
+                                <label for="text" >Добавить отзыв</label>
+                                <S.FormNewArtTextarea name="text" id="formArea" cols="auto" rows="5" placeholder="Введите описание"
+                                    value={text}
+                                    onChange={(event) => {
+                                        setText(event.target.value);
+                                    }}></S.FormNewArtTextarea>
+                            </S.FormNewArtBlock>
+                            <S.FormNewArtButton id="btnPublish" onClick={handleNewComments}>Опубликовать</S.FormNewArtButton>
+                        </S.ModalFormNewArt>
+
+                        : <></>
+                    }
 
                     {comments?.length > 0 ? comments?.map((comment, index) => (<ReviewsPost key={index} comment={comment} />)) : 'Коментарии отсутствуют'}
 

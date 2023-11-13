@@ -292,3 +292,24 @@ export async function deleteUserAds(id) {
   }
 }
 
+export async function putUserPassword(passwordOne, passwordTwo) {
+  const accessToken = localStorage.getItem("token");
+  const response = await fetch(`http://127.0.0.1:8090/user/password`, {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      password_1: passwordOne,
+      password_2: passwordTwo,
+    })
+  })
+  if (response.status === 401) {
+    if (sessionStorage.getItem('updated') !== 'true') {
+      await postNewToken()
+      await putUserPassword(passwordOne, passwordTwo)
+    }
+    sessionStorage.setItem('updated', 'false')
+  }
+}

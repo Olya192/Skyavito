@@ -21,3 +21,10 @@ export const setSearchAds = (selectAds) => {
         payload: selectAds
     }
 }
+
+export const setCommentsAds = (commentAds) => {
+    return {
+        type: ADS_TYPE.SET_SEARCH_ADS,
+        payload: commentAds
+    }
+}

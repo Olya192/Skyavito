@@ -28,6 +28,12 @@ export function adsReducer(state = INITIAL_STATE, action) {
                 ...state,
                 searchAds: action.payload
             }
+        case ADS_TYPE.SET_COMMENT_ADS:
+
+            return {
+                ...state,
+                commentAds: action.payload
+            }
 
 
         default:

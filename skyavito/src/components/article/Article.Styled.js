@@ -37,6 +37,9 @@ export const ArticContent = styled.div`
         -ms-flex-pack: center;
             justify-content: center;
   }
+  @media screen and (max-width: 320px) {
+    align-items: flex-start;
+  }
 `
 export const MainContainer = styled.div`
   max-width: 1178px;

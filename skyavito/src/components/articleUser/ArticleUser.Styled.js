@@ -10,6 +10,9 @@ export const ArticleRight = styled.div`
     width: 100%;
     padding: 0 20px;
   }
+  @media screen and (max-width: 320px) {
+    align-items: flex-start;
+  }
 `
 export const ArticleBlock = styled.div`
    display: -webkit-box;
@@ -45,6 +48,7 @@ export const ArticleData = styled.p`
     color: #5F5F5F;
     margin-bottom: 4px;
   }
+ 
 `
 
 
