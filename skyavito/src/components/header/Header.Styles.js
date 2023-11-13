@@ -11,13 +11,15 @@ max-width: 1178px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+   gap: 14px;  
+
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: end;
-`
+ `
 export const Button = styled.button`
 width: 224px;
   height: 40px;

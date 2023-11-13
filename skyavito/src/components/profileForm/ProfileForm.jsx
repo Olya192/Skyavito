@@ -89,25 +89,25 @@ export const ProfileForm = ({ user }) => {
                 </S.SettingsDiv>
                 <S.SettingsButton id="settings-btn" disabled={save} onClick={() => handleUserInfo()} >Сохранить</S.SettingsButton>
 
-                <div>
-                    <S.SettingsDiv>
-                        <p>Сменить пароль</p>
-                        <label for="password_1">Введите пароль</label>
-                        <S.SettingsInput id="password_1" name="city" type="password" placeholder="введите пароль"
-                            value={passwordOne}
-                            onChange={(event) => {
-                                setPasswordOne(event.target.value);
-                            }} />
-                    </S.SettingsDiv>
-                    <S.SettingsDiv>
-                        <label for="password_2">Повторите пароль</label>
-                        <S.SettingsInput id="password_2" name="phone" type="password" placeholder="повторите пароль"
-                            value={passwordTwo}
-                            onChange={(event) => {
-                                setPasswordTwo(event.target.value);
-                            }} />
-                    </S.SettingsDiv>
-                </div>
+
+                <S.SettingsDiv>
+                    <p>Сменить пароль</p>
+                    <label for="password_1">Введите пароль</label>
+                    <S.SettingsInput id="password_1" name="city" type="password" placeholder="введите пароль"
+                        value={passwordOne}
+                        onChange={(event) => {
+                            setPasswordOne(event.target.value);
+                        }} />
+                </S.SettingsDiv>
+                <S.SettingsDiv>
+                    <label for="password_2">Повторите пароль</label>
+                    <S.SettingsInput id="password_2" name="phone" type="password" placeholder="повторите пароль"
+                        value={passwordTwo}
+                        onChange={(event) => {
+                            setPasswordTwo(event.target.value);
+                        }} />
+                </S.SettingsDiv>
+
                 <S.SettingsButton id="settings-btn" disabled={password} onClick={() => handleUserPassword()} >Сохранить</S.SettingsButton>
             </S.SettingsForm>
         </S.SettingsRight>
