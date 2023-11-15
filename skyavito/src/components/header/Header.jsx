@@ -1,16 +1,15 @@
-import { useState } from 'react'
+
 import { Singing } from '../singin/Singin'
 import * as S from './Header.Styles'
 import { useNavigate } from 'react-router-dom'
 import { NewArticle } from '../newArticle/NewArticle'
 import img from '../../img/arrow_left_logout_icon_183058.png'
 
-export function Header() {
+export function Header({handModal, modal}) {
     const navigate = useNavigate()
     const user =  localStorage.getItem("token")
-    const [modal, setModal] = useState(true)
     
-    const handModal= () => setModal(prev => !prev)
+
 
     const hendelExit = () => {
         localStorage.removeItem("user")

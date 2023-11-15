@@ -6,13 +6,15 @@ import { useDispatch } from 'react-redux'
 import { getCards } from "../../api";
 import { setAds } from "../../store/actions/creators/adsCreators";
 import { useParams } from "react-router-dom";
+import { useState } from 'react'
 
 export function Container({ children }) {
 
     const dispatch = useDispatch()
     const setCards = (el) => dispatch(setAds(el))
     const params = useParams()
-
+    const [modal, setModal] = useState(true)
+    const handModal = () => setModal(prev => !prev)
 
     useEffect(() => {
         getCards()
@@ -24,12 +26,12 @@ export function Container({ children }) {
 
     return (
         <>
-            <Header></Header>
+            <Header handModal= {handModal} modal= {modal}></Header>
             <main class="main">
                 <MainHeader></MainHeader>
                 {children}
             </main>
-            <Footer></Footer>
+            <Footer handModal={handModal}></Footer>
 
         </>
     )

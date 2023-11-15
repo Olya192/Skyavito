@@ -28,3 +28,19 @@ export const setCommentsAds = (commentAds) => {
         payload: commentAds
     }
 }
+
+export const setModalAds = (modalAds) => {
+    return {
+        type: ADS_TYPE.SET_SEARCH_ADS,
+        payload: modalAds
+    }
+}
+
+export const setModalAuth = (modalAuth) => {
+    return {
+        type: ADS_TYPE.SET_SEARCH_ADS,
+        payload: modalAuth
+    }
+}
+
+

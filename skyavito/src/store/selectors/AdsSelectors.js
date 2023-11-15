@@ -13,3 +13,12 @@ export function getSearchList(store) {
 export function getCommentList(store) {
     return store.ads.commentAds
 }
+
+export function getModalList(store) {
+    return store.ads.modalAds
+}
+
+
+export function getModalAuth(store) {
+    return store.ads.modalAds
+}
