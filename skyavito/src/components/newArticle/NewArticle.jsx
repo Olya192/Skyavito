@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import * as S from './NewArticle.Styled.js'
-import { postNewAds, postNewImgAds } from '../../api.js'
+import { getCards, postNewAds, postNewImgAds } from '../../api.js'
+import { useDispatch } from 'react-redux'
+import { setAds } from '../../store/actions/creators/adsCreators.js'
 
 
 export const NewArticle = ({ handModal, open }) => {
-
-    
-
+    const dispatch = useDispatch()
+    const setCards = (el) => dispatch(setAds(el))
     const [description, setDescription] = useState()
     const [title, setTitle] = useState()
     const [price, setPrice] = useState()
@@ -24,8 +25,14 @@ export const NewArticle = ({ handModal, open }) => {
                 await postNewImgAds(formData, post.id);
             }
         }
+        handModal()
         setLoading(false)
+        getCards()
+        .then((cards) => {
+            setCards(cards)
+        })
     }
+
 
     const handleImg = (event) => {
         console.log('1')
@@ -37,6 +44,7 @@ export const NewArticle = ({ handModal, open }) => {
             setImages((prev) => ({ ...prev, [event.target.id]: selectedFile }))
         };
         console.log('2', selectedFile)
+     
     }
 
     console.log(images)
@@ -44,6 +52,7 @@ export const NewArticle = ({ handModal, open }) => {
     return (
 
         <S.ModalBlock style={{ visibility: open ? 'hidden' : 'visible' }}>
+             <S.Backdrop onClick={handModal} />
             <S.ModalContent>
                 <S.ModalTitle>Новое объявление</S.ModalTitle>
                 <S.ModalBtnClose>

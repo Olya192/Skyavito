@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import { getUser, postAuth, postRegist } from '../../api';
 
-export const Singing = ({handModal, open }) => {
+export const Singing = ({ handModal, open }) => {
     const navigate = useNavigate()
     const [userReg, setUserReg] = useState(false)
     const handReg = () => setUserReg(prev => !prev)
@@ -24,10 +24,10 @@ export const Singing = ({handModal, open }) => {
             const token = await postAuth(email, password)
             localStorage.setItem("tokenRefresh", token.refresh_token)
             localStorage.setItem("token", token.access_token)
-             const user = await getUser()
+            const user = await getUser()
             localStorage.setItem("user", JSON.stringify(user))
-             console.log('Все ок');
-             handModal()
+            console.log('Все ок');
+            handModal()
         } catch (error) {
             setError(error?.message)
         }
@@ -61,7 +61,8 @@ export const Singing = ({handModal, open }) => {
         <>
             {!userReg ?
                 < S.ModalBlock style={{ visibility: open ? 'hidden' : 'visible' }} >
-                    <S.ModalFormLogin id="formLogIn" action="#">
+                    <S.Backdrop onClick={handModal} />
+                    <S.ModalFormLogin id="formLogIn" action="#" onSubmit={(e) => e.preventDefault()}>
                         <S.ModalLogo>
                             <img src="../img/logo_modal.png" alt="logo" />
                         </S.ModalLogo>
@@ -87,7 +88,8 @@ export const Singing = ({handModal, open }) => {
                 </S.ModalBlock >
                 :
                 <S.ModalBlock style={{ visibility: open ? 'hidden' : 'visible' }} >
-                    <S.ModalFormLogin id="formLogUp" action="#">
+                   <S.Backdrop onClick={handModal} />
+                    <S.ModalFormLogin id="formLogUp" action="#" onSubmit={(e) => e.preventDefault()}>
                         <S.ModalLogo>
                             <img src="../img/logo_modal.png" alt="logo" />
                         </S.ModalLogo>

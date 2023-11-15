@@ -84,9 +84,7 @@ font-style: normal;
     width: 12px;
     height: 12px;
     background-color: transparent;
-    border-top: 2px solid #000000;
-    border-left: 2px solid #000000;
-    -webkit-transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
             transform: rotate(-45deg);
     position: absolute;
     top: 9px;
@@ -127,4 +125,8 @@ export const Seller = styled.div`
   @media screen and (max-width: 620px) {
     padding: 85px 0px 84px;
   }
+  @media screen and (max-width:330px) {
+    margin-left: 14px;
+  }
+
 `

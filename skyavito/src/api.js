@@ -1,3 +1,5 @@
+import { isExpired } from "./utils";
+
 export async function getCards(userId) {
   let url = new URL('http://127.0.0.1:8090/ads');
   if (userId) url.searchParams.append('user_id', userId);
@@ -83,7 +85,11 @@ export async function postRegist(email, password, name, city, surname) {
 }
 
 export async function getUser() {
-  const accessToken = localStorage.getItem("token");
+  let accessToken = localStorage.getItem("token");
+  if (isExpired(accessToken)) {
+    await postNewToken()
+    accessToken = localStorage.getItem("token");
+  }
   const response = await fetch('http://127.0.0.1:8090/user', {
     method: "GET",
     headers: {
@@ -91,7 +97,6 @@ export async function getUser() {
       "content-type": "application/json",
     },
   })
-
   if (!response.ok) {
     throw new Error('Ошибка сервера')
   }
@@ -101,7 +106,11 @@ export async function getUser() {
 }
 
 export async function getCardsUser() {
-  const accessToken = localStorage.getItem("token");
+  let accessToken = localStorage.getItem("token");
+  if (isExpired(accessToken)) {
+    await postNewToken()
+    accessToken = localStorage.getItem("token");
+  }
   const response = await fetch('http://127.0.0.1:8090/ads/me', {
     method: "GET",
     headers: {
@@ -109,19 +118,9 @@ export async function getCardsUser() {
       "content-type": "application/json",
     },
   })
-  console.log(response)
-  if (response.status === 401) {
-    if (sessionStorage.getItem('updated') !== 'true') {
-      await postNewToken()
-      await getCardsUser()
-    }
-  } else {
-    sessionStorage.setItem('updated', 'false')
-    const cards = await response.json()
-    console.log(cards)
-    return cards
-  }
-
+  const cards = await response.json()
+  console.log(cards)
+  return cards
 }
 
 export async function postNewToken() {
@@ -146,7 +145,11 @@ export async function postNewToken() {
 }
 
 export async function postNewAvatar(formData) {
-  const accessToken = localStorage.getItem("token");
+  let accessToken = localStorage.getItem("token");
+  if (isExpired(accessToken)) {
+    await postNewToken()
+    accessToken = localStorage.getItem("token");
+  }
   const response = await fetch("http://127.0.0.1:8090/user/avatar", {
     method: "POST",
     headers: {
@@ -163,7 +166,11 @@ export async function postNewAvatar(formData) {
 }
 
 export async function postNewUserInfo(phone, name, city, surname) {
-  const accessToken = localStorage.getItem("token");
+  let accessToken = localStorage.getItem("token");
+  if (isExpired(accessToken)) {
+    await postNewToken()
+    accessToken = localStorage.getItem("token");
+  }
   const response = await fetch("http://127.0.0.1:8090/user", {
     method: "PATCH",
     headers: {
@@ -187,7 +194,11 @@ export async function postNewUserInfo(phone, name, city, surname) {
 }
 
 export async function postNewCardComments(id, text) {
-  const accessToken = localStorage.getItem("token");
+  let accessToken = localStorage.getItem("token");
+  if (isExpired(accessToken)) {
+    await postNewToken()
+    accessToken = localStorage.getItem("token");
+  }
   const response = await fetch(`http://127.0.0.1:8090/ads/${id}/comments`, {
     method: "POST",
     headers: {
@@ -198,17 +209,14 @@ export async function postNewCardComments(id, text) {
       text: text,
     })
   })
-  if (response.status === 401) {
-    if (sessionStorage.getItem('updated') !== 'true') {
-      await postNewToken()
-      await postNewCardComments(id, text)
-    }
-    sessionStorage.setItem('updated', 'false')
-  }
 }
 
 export async function postNewAds(title, description, price) {
-  const accessToken = localStorage.getItem("token");
+  let accessToken = localStorage.getItem("token");
+  if (isExpired(accessToken)) {
+    await postNewToken()
+    accessToken = localStorage.getItem("token");
+  }
   const response = await fetch(`http://127.0.0.1:8090/adstext`, {
     method: "POST",
     headers: {
@@ -221,19 +229,16 @@ export async function postNewAds(title, description, price) {
       price: price
     })
   })
-  if (response.status === 401) {
-    if (sessionStorage.getItem('updated') !== 'true') {
-      await postNewToken()
-      await postNewAds(title, description, price)
-    }
-    sessionStorage.setItem('updated', 'false')
-  }
   const post = await response.json()
   return post
 }
 
 export async function postNewImgAds(formData, id) {
-  const accessToken = localStorage.getItem("token");
+  let accessToken = localStorage.getItem("token");
+  if (isExpired(accessToken)) {
+    await postNewToken()
+    accessToken = localStorage.getItem("token");
+  }
   const response = await fetch(`http://127.0.0.1:8090/ads/${id}/image`, {
     method: "POST",
     headers: {
@@ -241,17 +246,14 @@ export async function postNewImgAds(formData, id) {
     },
     body: formData,
   })
-  if (response.status === 401) {
-    if (sessionStorage.getItem('updated') !== 'true') {
-      await postNewToken()
-      await postNewImgAds(formData, id)
-    }
-    sessionStorage.setItem('updated', 'false')
-  }
 }
 
 export async function patchRedactAds(title, description, price, id) {
-  const accessToken = localStorage.getItem("token");
+  let accessToken = localStorage.getItem("token");
+  if (isExpired(accessToken)) {
+    await postNewToken()
+    accessToken = localStorage.getItem("token");
+  }
   const response = await fetch(`http://127.0.0.1:8090/ads/${id}`, {
     method: "PATCH",
     headers: {
@@ -264,36 +266,31 @@ export async function patchRedactAds(title, description, price, id) {
       price: price
     })
   })
-  if (response.status === 401) {
-    if (sessionStorage.getItem('updated') !== 'true') {
-      await postNewToken()
-      await postNewAds(title, description, price)
-    }
-    sessionStorage.setItem('updated', 'false')
-  }
   const post = await response.json()
   return post
 }
 
 export async function deleteUserAds(id) {
-  const accessToken = localStorage.getItem("token");
+  let accessToken = localStorage.getItem("token");
+  if (isExpired(accessToken)) {
+    await postNewToken()
+    accessToken = localStorage.getItem("token");
+  }
   const response = await fetch(`http://127.0.0.1:8090/ads/${id}`, {
     method: "DELETE",
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },
   })
-  if (response.status === 401) {
-    if (sessionStorage.getItem('updated') !== 'true') {
-      await postNewToken()
-      await deleteUserAds(id)
-    }
-    sessionStorage.setItem('updated', 'false')
-  }
+
 }
 
 export async function putUserPassword(passwordOne, passwordTwo) {
-  const accessToken = localStorage.getItem("token");
+  let accessToken = localStorage.getItem("token");
+  if (isExpired(accessToken)) {
+    await postNewToken()
+    accessToken = localStorage.getItem("token");
+  }
   const response = await fetch(`http://127.0.0.1:8090/user/password`, {
     method: "PUT",
     headers: {
@@ -305,11 +302,31 @@ export async function putUserPassword(passwordOne, passwordTwo) {
       password_2: passwordTwo,
     })
   })
-  if (response.status === 401) {
-    if (sessionStorage.getItem('updated') !== 'true') {
-      await postNewToken()
-      await putUserPassword(passwordOne, passwordTwo)
-    }
-    sessionStorage.setItem('updated', 'false')
-  }
+
 }
+
+
+export async function deleteImgAds(id, img) {
+  let accessToken = localStorage.getItem("token");
+  if (isExpired(accessToken)) {
+    await postNewToken()
+    accessToken = localStorage.getItem("token");
+  }
+  let url = new URL(`http://127.0.0.1:8090/ads/${id}/image`);
+  if (img) url.searchParams.append('file_url', img);
+  const response = await fetch(url, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      "content-type": "application/json",
+    }
+  })
+  const card = await response.json()
+  return card
+}
+
+
+
+
+
+

@@ -168,7 +168,19 @@ export const ArticleBarMob = styled.div`
     border: 1px solid #FFFFFF;
   }
 `
+export const ArticleImgDeleteButton = styled.button`
+ color: #FFFFFF;
+ background-color: #009EE4;
+ border: 1px solid #009EE4;
+ border-radius: 6px;
+ border: 1px solid #009EE4;ъ
+ &:hover{background: #0080c1;
+  border: 1px solid #FFFFFF;} 
+`
 
+export const ArticleImgDiv = styled.div`
+    display: flex;
+    flex-direction: column;
 
-
+`
 

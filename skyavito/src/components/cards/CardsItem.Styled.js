@@ -29,8 +29,8 @@ export const CardsImage = styled.div`
     background-color: #D9D9D9;}
 `
 export const Image = styled.img`
-  width: 100%;
-  height: 100%;
+  width: 270px;
+  height: 270px;
   display: block;
   -o-object-fit: cover;
      object-fit: cover;

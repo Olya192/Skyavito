@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import * as S from './RedactArticle.Styled.js'
 import {patchRedactAds, postNewImgAds } from '../../api.js'
 
@@ -17,6 +17,12 @@ export const RedactArticle = ({ handModalAds, open, card }) => {
         } else return true
     }, [title, card.title, card.description, card.price, description, price, Object.keys(images).length])
 
+    
+    useEffect(() => {
+        setDescription(card.description)
+        setTitle(card.title)
+        setPrice(card.price)
+    }, [card.description, card.price, card.title])
 
 
     const redactCard = async () => {
@@ -45,13 +51,15 @@ export const RedactArticle = ({ handModalAds, open, card }) => {
         console.log('2', selectedFile)
     }
 
-    console.log(images)
+
+
 
     return (
 
         <S.ModalBlock style={{ visibility: open ? 'hidden' : 'visible' }}>
+            <S.Backdrop onClick={handModalAds} />
             <S.ModalContent>
-                <S.ModalTitle>Новое объявление</S.ModalTitle>
+                <S.ModalTitle>Редактировать объявление</S.ModalTitle>
                 <S.ModalBtnClose>
                     <S.ModalBtnCloseLine onClick={handModalAds}></S.ModalBtnCloseLine>
                 </S.ModalBtnClose>
@@ -73,7 +81,7 @@ export const RedactArticle = ({ handModalAds, open, card }) => {
                             }}></S.FormNewArtArea>
                     </S.FormNewArtBlock>
                     <S.FormNewArtBlock>
-                        <S.FormNewArtP>Фотографии товара<span>не более 5 фотографий</span></S.FormNewArtP>
+                        <S.FormNewArtP>Добавить новые отографии товара<span>не более 5 фотографий</span></S.FormNewArtP>
                         <S.FormNewArtBarImg>
                             <S.FormNewArtImg >
                                 <img src={images['upload1'] ? URL.createObjectURL(images['upload1']) : ''} alt="" />

@@ -58,6 +58,13 @@ export const ContentCards = styled.div`
         grid-template-columns: repeat(3, 270px);
   }
 
+  @media screen and (max-width: 330px) {
+      display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: repeat(2, 137px);
+        grid-template-columns: repeat(2, 137px);
+  }
+
 `
 export const SettingsInput = styled.div`
   max-width: 1178px;
@@ -69,4 +76,5 @@ export const SettingsInput = styled.div`
   @media screen and (max-width: 620px) {
     padding: 85px 0px 84px;
   }
+  
 `

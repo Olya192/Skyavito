@@ -17,7 +17,7 @@ export const AppRoutes = () => {
                         element={
                             <Main />
                         } />
-                    <Route path="/article"
+                    <Route path="/article/:id"
                         element={
                             <Article />
                         } />

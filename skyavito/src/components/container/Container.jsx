@@ -5,11 +5,13 @@ import { MainHeader } from "../main_header/MainHeader";
 import { useDispatch } from 'react-redux'
 import { getCards } from "../../api";
 import { setAds } from "../../store/actions/creators/adsCreators";
+import { useParams } from "react-router-dom";
 
 export function Container({ children }) {
 
     const dispatch = useDispatch()
     const setCards = (el) => dispatch(setAds(el))
+    const params = useParams()
 
 
     useEffect(() => {

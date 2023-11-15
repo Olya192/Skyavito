@@ -87,6 +87,8 @@ export const ArticleButton = styled.button`
   line-height: 22px;
   color: #FFFFFF;
   font-family: 'Roboto', sans-serif;
+  &:hover{background: #0080c1;
+  border: 1px solid #FFFFFF;} 
   span {
   display: block;
   font-size: 14px;

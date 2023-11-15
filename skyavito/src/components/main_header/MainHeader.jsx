@@ -40,7 +40,11 @@ export function MainHeader() {
                             onChange={(event) => {
                                 setSearchValue(event.target.value);
                             }} />
-                        <S.InputMob type="search" placeholder="Поиск" name="search-mob" />
+                        <S.InputMob type="search" placeholder="Поиск" name="search-mob"
+                         value={searchValue}
+                         onChange={(event) => {
+                             setSearchValue(event.target.value);
+                         }} />
                         <S.ButtonInput onClick={filterCards}>Найти</S.ButtonInput>
                     </>
                     :

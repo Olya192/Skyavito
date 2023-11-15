@@ -8,6 +8,17 @@ export const Container = styled.div`
     background-color: #F4F5F6;
 
 `
+export const Backdrop = styled.div`
+  background-color: black;
+  opacity: 0.5;
+  z-index: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+`
+
 export const ModalTitle = styled.h3`
     &::before {
         border-top: 2px solid #0080C1;
@@ -510,12 +521,14 @@ export const FormNewArtButton = styled.button`
   margin-top: 10px;
   width: 181px;
   height: 50px;
-  background: #D9D9D9;
+  background-color: #009EE4;
   border: 1px solid #D9D9D9;
   border-radius: 6px;
   font-size: 16px;
   line-height: 24px;
   color: #FFFFFF;
+  &:hover{background: #0080c1;
+  border: 1px solid #FFFFFF;} 
     @media screen and (max-width: 600px){
         margin-top: 10px;
     width: 100%;

@@ -112,7 +112,5 @@ export const ProfileForm = ({ user }) => {
             </S.SettingsForm>
         </S.SettingsRight>
     )
-
-    //{"id":10,"name":"","email":"bag12345@gmail.com","city":"","avatar":null,"sells_from":null,"phone":null,"role":"user","surname":null}
-
+   
 }

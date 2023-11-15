@@ -32,8 +32,6 @@ export const MainH2 = styled.h2`
     width: 12px;
     height: 12px;
     background-color: transparent;
-    border-top: 2px solid #000000;
-    border-left: 2px solid #000000;
     -webkit-transform: rotate(-45deg);
             transform: rotate(-45deg);
     position: absolute;
@@ -57,6 +55,7 @@ export const MainContent = styled.div`
     top: 134px;
     bottom: 84px;
   }
+
 `
 
 export const ContentCards = styled.div`
@@ -76,6 +75,7 @@ export const ContentCards = styled.div`
   scrollbar-width: thin;
   scrollbar-width: 0px;
   height: 922px;
+ 
 
   &::-webkit-scrollbar {
   width: 0px;
@@ -116,6 +116,15 @@ export const ContentCards = styled.div`
     -ms-grid-columns: repeat(3, 270px);
         grid-template-columns: repeat(3, 270px);
   }
+  @media screen and (max-width: 330px) {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: repeat(2, 160px);
+        grid-template-columns: repeat(2, 137px);
 
+        margin-top: 100px;
+        gap: 50px
+    
+  }
 
 `

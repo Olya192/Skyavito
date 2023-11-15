@@ -1,6 +1,6 @@
 import { styled } from 'styled-components'
 
-export const Footer = styled.div`
+export const Footer = styled.footer`
   display: none;
   @media screen and (max-width: 590px) {
     position: fixed;
@@ -39,7 +39,9 @@ export const FooterContainer = styled.div`
 `
 export const FooterImg = styled.div`
   @media screen and (max-width: 590px) {
-    width: 42px;
-    height: 42px;
+img {    width: 42px;
+    height: 42px;}
     }
 `
+
+

@@ -29,6 +29,6 @@ width: 224px;
   color: #FFFFFF;
   font-size: 16px;
   line-height: 1;
-&:hover{background: rgba(255, 255, 255, 0.15);
+&:hover{background: #0080c1;
   border: 1px solid #FFFFFF;} 
 `

@@ -143,5 +143,6 @@ export const SettingsName = styled.div`
 
   @media screen and (max-width: 620px) {
     padding: 85px 0px 84px;
+    gap:40px;
   }
 `

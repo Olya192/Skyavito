@@ -2,7 +2,7 @@ import { styled } from 'styled-components'
 
 export const ModalBlock = styled.div`
   position: absolute;
-  z-index: 2;
+  z-index: 5;
   left: calc(50% - (366px/2));
   top: calc(50% - (647px/2));
   opacity: 1;
@@ -10,6 +10,16 @@ export const ModalBlock = styled.div`
      left: calc(50% - (320px/2));
     top: 55px;
   }
+`
+export const Backdrop = styled.div`
+  background-color: black;
+  opacity: 0.5;
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 `
 export const ModalFormLogin = styled.form`
   width: 366px;

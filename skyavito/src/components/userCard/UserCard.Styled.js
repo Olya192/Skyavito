@@ -26,6 +26,7 @@ display: -webkit-box;
         -ms-flex-align: center;
             align-items: center;
     margin-right: 0;
+    gap: 40px;
   }
 `
 export const SettingsImg = styled.div`
