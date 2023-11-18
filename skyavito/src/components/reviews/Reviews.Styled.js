@@ -14,6 +14,16 @@ export const ModalBlock = styled.div`
     opacity: 1;
   }
 `
+export const Backdrop = styled.div`
+  background-color: black;
+  opacity: 0.5;
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+`
 export const ModalContent = styled.div`
   display: -webkit-box;
   display: -ms-flexbox;

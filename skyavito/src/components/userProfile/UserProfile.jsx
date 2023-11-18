@@ -2,7 +2,7 @@ import { ProfileForm } from "../profileForm/ProfileForm"
 import { UserCards } from "../userCard/UserCard"
 import * as S from './UserProfile.styled'
 
-export const UserProfile = ({user}) => {
+export const UserProfile = ({ user, updateUserCard }) => {
 
 
 
@@ -13,8 +13,8 @@ export const UserProfile = ({user}) => {
                 <S.ProfileContent>
                     <S.ProfileTitle>Настройки профиля</S.ProfileTitle>
                     <S.ProfileSettings>
-                        <UserCards user={user}/>
-                        <ProfileForm user={user}/>
+                        <UserCards user={user} updateUserCard={updateUserCard} />
+                        <ProfileForm user={user} updateUserCard={updateUserCard}/>
                     </S.ProfileSettings>
                 </S.ProfileContent>
             </S.MainProfile>

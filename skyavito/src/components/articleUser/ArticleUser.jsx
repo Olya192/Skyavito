@@ -60,7 +60,7 @@ export const ArticleUser = ({ handModal, card, comments, handModalAds, myAds }) 
                 }
                 <S.ArticleAuthor>
                     <S.ArticleImg>
-                        <img src={card?.user?.avatar > 0 ? `http://127.0.0.1:8090/${card?.user?.avatar}` : img} alt="" />
+                        <img src={card?.user?.avatar ? `http://127.0.0.1:8090/${card?.user?.avatar}` : img} alt="" />
                     </S.ArticleImg>
                     <S.AuthorCont>
                         <S.AuthorName onClick={() => navigate('/seller-profile')}>{card?.user?.name}</S.AuthorName>

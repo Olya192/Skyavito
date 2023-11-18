@@ -12,17 +12,22 @@ export const Profile = () => {
     console.log(user)
     const [userCards, setUserCards] = useState([])
 
-    useEffect(() => {
+
+    const updateUserCard = () => {
         getCardsUser()
             .then((cards) => {
                 setUserCards(cards)
             })
+    }
+
+    useEffect(() => {
+        updateUserCard()
     }, [])
 
 
     return (
         <S.SettingsInput>
-            <UserProfile user={user} />
+            <UserProfile user={user} updateUserCard={updateUserCard}/>
             <div class="content__cards cards">
 
                 <S.ContentCards>

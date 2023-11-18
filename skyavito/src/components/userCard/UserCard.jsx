@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import img from '../../img/photo_2023-11-10_21-58-33.jpg'
 import { postNewAvatar } from '../../api'
 
-export const UserCards = ({user}) => {
+export const UserCards = ({user, updateUserCard}) => {
 
   
 
@@ -18,6 +18,7 @@ export const UserCards = ({user}) => {
             formData.append('file', selectedFile);
             const userAvatar = await postNewAvatar(formData);
             localStorage.setItem("user", JSON.stringify(userAvatar))
+            updateUserCard()
         };
     }
 
