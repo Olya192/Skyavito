@@ -4,7 +4,7 @@ import { Container } from "../container/Container";
 
 export const ProtectedRoute = ({ children, redirectPath = "/login", isAllowed }) => {
 
-    if (!isAllowed) {
+    if (!isAllowed()) {
         return <Navigate to='/' replace={true} />
     }
 
