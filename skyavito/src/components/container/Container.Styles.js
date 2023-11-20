@@ -1,7 +1,6 @@
 import styled, { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
-  
   a,
   a:visited {
     text-decoration: none;

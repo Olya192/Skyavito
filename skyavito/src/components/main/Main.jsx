@@ -10,21 +10,9 @@ import { useState } from "react"
 
 export function Main() {
 
-    const dispatch = useDispatch()
-
-    const setSelectedAds = (el) => dispatch(setSelectAds(el))
     const searchedCards = useSelector(getSearchList)
     console.log(searchedCards)
 
-
-
-    const handleSelectedAds = (card) => {
-        getSetCard(card.id)
-            .then((setCard) => {
-                setSelectedAds(setCard)
-            })
-
-    }
 
 
     return (
@@ -35,7 +23,7 @@ export function Main() {
             <S.MainContent>
 
                 <S.ContentCards >
-                    {searchedCards?.map((card, index) => (<CardsItem handleSelectedAds={handleSelectedAds} key={index} card={card} />))}
+                    {searchedCards?.map((card, index) => (<CardsItem key={index} card={card} />))}
                 </S.ContentCards>
             </S.MainContent>
 

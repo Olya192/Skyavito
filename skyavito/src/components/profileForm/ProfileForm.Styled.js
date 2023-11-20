@@ -98,6 +98,10 @@ label {
     margin-bottom: 6px;
   }
   }
+  @media screen and (max-width: 330px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `
 export const SettingsDiv = styled.div`
   display: inline-block;
@@ -111,8 +115,8 @@ export const SettingsDiv = styled.div`
 export const SettingsInput = styled.input`
   width: 300px;
   @media screen and (max-width: 620px) {
-    width: 100%;
-  }
+    width: 200px
+    }
 `
 
 export const SettingsButton = styled.button`
@@ -133,7 +137,6 @@ font-size: 16px;
   @media screen and (max-width: 620px) {
     font-size: 16px;
     line-height: 1;
-    width: 100%;
     height: 46px;
     margin: 8px 0px 0;
   }
@@ -141,8 +144,8 @@ font-size: 16px;
 export const SettingsName = styled.div`
  display: flex;
 
-  @media screen and (max-width: 620px) {
-    padding: 85px 0px 84px;
-    gap:40px;
+  @media screen and (max-width: 330px) {
+    flex-direction: column;
+    align-items: center;
   }
 `

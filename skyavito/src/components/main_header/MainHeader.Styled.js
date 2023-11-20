@@ -16,6 +16,7 @@ export const MainSearch = styled.div`
   max-width: 1178px;
   margin: 0 auto;
   padding: 31px 10px 0px;
+  height: 136px;
   @media screen and (max-width: 590px) {
     width: 100%;
     height: 55px;
@@ -120,7 +121,6 @@ export const InputMob = styled.input`
    display: none; 
    @media screen and (max-width: 590px) {
   display: inline-block;
-    width: 100%;
     height: 32px;
     border: none;
     border-radius: 30px;
@@ -168,5 +168,8 @@ export const ButtonInput = styled.button`
     font-size: 14px;
     line-height: 21px;
   }
+  @media screen and (max-width: 590px) {
+   display: none;
+  } 
 
 `

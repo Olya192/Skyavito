@@ -6,8 +6,7 @@ export const Container = styled.div`
     margin: 0 auto;
     position: relative;
     background-color: #F4F5F6;
-
-`
+ `
 export const ModalTitle = styled.h3`
     &::before {
         border-top: 2px solid #0080C1;
@@ -26,6 +25,8 @@ export const ModalBlock = styled.div`
     left: 0px;
     top: 55px;
     opacity: 1;
+       margin: auto;
+    width: 100%;
   }
 `
 export const ModalContent = styled.div`
@@ -46,6 +47,7 @@ export const ModalContent = styled.div`
   border-radius: 12px;
   position: relative;
   @media screen and (max-width: 600px){
+    margin: auto;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -56,10 +58,13 @@ export const ModalContent = styled.div`
     -webkit-box-align: start;
         -ms-flex-align: start;
             align-items: flex-start;
-    width: 100%;
-    min-width: 320px;
+    width: 320px;
     height: auto;
     padding: 30px 20px 30px;
+    @media screen and (max-width: 330px){
+      width: 270px;
+      margin: auto;
+  }
   }
 `
 export const ModalBtnClose = styled.div`
@@ -70,9 +75,6 @@ export const ModalBtnClose = styled.div`
   right: 50px;
   z-index: 3;
   cursor: pointer;
-  @media screen and (max-width: 600px){
-    display: none;
-  }
 `
 export const ModalBtnCloseLine = styled.div`
     position: relative;
@@ -210,6 +212,9 @@ export const FormNewArtInput = styled.input`
   }
 
   }
+  @media screen and (max-width: 330px){
+    width: 200px;
+  }
 `
 export const FormNewArtArea = styled.textarea`
   padding: 13px 19px;
@@ -280,6 +285,9 @@ export const FormNewArtArea = styled.textarea`
     color: #C4C4C4;
   }
 
+  }
+  @media screen and (max-width: 330px){
+    width: 200px;
   }
 `
 export const FormNewArtP = styled.p`
@@ -354,9 +362,9 @@ export const FormNewArtImg = styled.div`
 }
   @media screen and (max-width: 600px){
     display: block;
-    width: 90px;
-    min-width: 90px;
-    height: 90px;
+    width: 45px;
+    min-width: 45px;
+    height: 45px;
     background-color: #F0F0F0;
     margin: 0 5px;
     img {
@@ -470,7 +478,9 @@ export const FormNewArtInputPrise = styled.input`
     color: #000000;
   }
   }
-
+  @media screen and (max-width: 330px){
+    width: 200px;
+  }
 `
 export const FormNewArtInputPriseCover = styled.div`
   width: 24px;
@@ -506,6 +516,7 @@ export const FormNewArtInputPriseCover = styled.div`
     line-height: 21px;
   }
   }
+  
 `
 export const FormNewArtButton = styled.button`
   margin-top: 10px;

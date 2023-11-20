@@ -93,10 +93,11 @@ export const ArticleButton = styled.button`
   display: block;
   font-size: 14px;
   font-weight: 400;
+
 }
 
 @media screen and (max-width: 768px) {
-  width: 100%;
+
     height: 57px;
     font-size: 14px;
     line-height: 20px;
@@ -109,6 +110,11 @@ export const ArticleButton = styled.button`
 export const ArticleButtonDiv = styled.div`
 display: flex;
     gap: 14px;
+    @media screen and (max-width: 
+      330px) {
+        flex-direction: column;
+  }
+
     `
 
 export const ArticleAuthor = styled.div`

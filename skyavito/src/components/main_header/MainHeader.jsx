@@ -15,6 +15,7 @@ export function MainHeader() {
     const [searchValue, setSearchValue] = useState('')
 
     const ref = useRef(null);
+    const refTwo = useRef(null);
 
     const onClear = () => {
         setSearchValue('')
@@ -59,9 +60,17 @@ export function MainHeader() {
                         />
                         <S.InputMob type="search" placeholder="Поиск" name="search-mob"
                             value={searchValue}
+                            ref={refTwo}
                             onChange={(event) => {
                                 setSearchValue(event.target.value);
-                            }} />
+                                filterCards(event)
+                            }}
+                            onClick={(event) => {
+                                const element = refTwo.current;
+                                element.addEventListener('search', onClear);
+                                setTimeout(() => element.removeEventListener('search', onClear));
+                            }} 
+                            />
                         <S.ButtonInput onClick={filterCards}>Найти</S.ButtonInput>
                     </>
                     :

@@ -23,7 +23,6 @@ export const Backdrop = styled.div`
 `
 export const ModalFormLogin = styled.form`
   width: 366px;
-  height: 647px;
   background-color: #FFFFFF;
   border-radius: 12px;
   display: -webkit-box;
@@ -139,13 +138,16 @@ export const ModalButtonEnter = styled.button`
    width: 278px;
   height: 52px;
   background-color: #009EE4;
+  color: #ffffff;
   border-radius: 6px;
-  margin-top: 60px;
   margin-bottom: 20px;
   border: none;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;

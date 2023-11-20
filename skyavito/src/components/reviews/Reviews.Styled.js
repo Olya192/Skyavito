@@ -12,6 +12,8 @@ export const ModalBlock = styled.div`
     left: 0px;
     top: 55px;
     opacity: 1;
+    width: 100%;
+    margin: auto;
   }
 `
 export const Backdrop = styled.div`
@@ -53,9 +55,12 @@ export const ModalContent = styled.div`
         -ms-flex-align: start;
             align-items: flex-start;
     width: 100%;
-    min-width: 320px;
     height: auto;
     padding: 30px 20px 30px;
+  }
+  @media screen and (max-width: 330px){
+    width: 270px;
+    margin: auto;
   }
 `
 export const ModalTitle = styled.h3`
@@ -69,22 +74,8 @@ export const ModalTitle = styled.h3`
     line-height: 29px;
     padding: 0 0 0 26px;
     position: relative;
-    &::before {
-    content: "";
-    display: block;
-    width: 12px;
-    height: 12px;
-    background-color: transparent;
-    border-top: 2px solid #000000;
-    border-left: 2px solid #000000;
-    -webkit-transform: rotate(-45deg);
-            transform: rotate(-45deg);
-    position: absolute;
-    top: 9px;
-    left: 0;
-    cursor: pointer;
   }
-  }
+
 `
 export const ModalClose = styled.div`
   width: 23px;
@@ -120,9 +111,7 @@ export const ModalCloseLine = styled.div`
 &:hover::after, &:hover::before {
   background-color: #0080C1;
 }
-  @media screen and (max-width: 600px) {
-    display: none;
-  }
+
 `
 export const ModalScroll = styled.div`
   display: -webkit-box;
@@ -149,7 +138,7 @@ export const ModalScroll = styled.div`
   border-radius: 0px;
 }
 `
-export const  ModalFormNewArt = styled.form`
+export const ModalFormNewArt = styled.form`
   margin-top: 5px;
   margin-bottom: 15px;
   display: -webkit-box;
@@ -174,7 +163,7 @@ export const  ModalFormNewArt = styled.form`
   }
   }
 `
-export const  FormNewArtBlock = styled.div`
+export const FormNewArtBlock = styled.div`
  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -196,7 +185,7 @@ export const  FormNewArtBlock = styled.div`
     margin-bottom: 16px;
   }
 `
-export const  FormNewArtTextarea = styled.textarea`
+export const FormNewArtTextarea = styled.textarea`
    font-family: 'Roboto', sans-serif;
   padding: 10px 19px;
   background: #FFFFFF;
@@ -270,8 +259,11 @@ export const  FormNewArtTextarea = styled.textarea`
     color: #C4C4C4;
   }
   }
+  @media screen and (max-width: 330px){
+    width: 230px;
+  }
 `
-export const  FormNewArtButton = styled.button`
+export const FormNewArtButton = styled.button`
   width: 181px;
   height: 50px;
   background: #D9D9D9;

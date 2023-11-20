@@ -63,6 +63,7 @@ export const ContentCards = styled.div`
     display: grid;
     -ms-grid-columns: repeat(2, 137px);
         grid-template-columns: repeat(2, 137px);
+        margin-left: 15px;
   }
 
 `

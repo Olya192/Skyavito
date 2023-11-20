@@ -107,8 +107,8 @@ export const Singing = ({ handModal, open }) => {
                                 setPassword(event.target.value);
                             }} />
                         <p>  {error ? `${error}` : ''}  </p>
-                        <S.ModalButtonEnter id="btnEnter" onClick={() => handleLogin({ email, password })}> <Link to='/'>Войти</Link> </S.ModalButtonEnter>
-                        <S.ModalButtonSignap id="btnSignUp" onClick={handReg}><Link to='/'>Зарегистрироваться</Link> </S.ModalButtonSignap>
+                        <S.ModalButtonEnter id="btnEnter" onClick={() => handleLogin({ email, password })}> Войти </S.ModalButtonEnter>
+                        <S.ModalButtonSignap id="btnSignUp" onClick={handReg}>Зарегистрироваться </S.ModalButtonSignap>
                     </S.ModalFormLogin>
                 </S.ModalBlock >
                 :
@@ -149,9 +149,9 @@ export const Singing = ({ handModal, open }) => {
                                 setCity(event.target.value);
                             }} />
                         <p>  {error ? `${error}` : ''}  </p>
-                        <S.ModalButtonSignap id="SignUpEnter" onClick={() => handleRegister({ email, password, name, city, surname })}><Link to='/'>Зарегистрироваться</Link> </S.ModalButtonSignap>
+                        <S.ModalButtonSignap id="SignUpEnter" onClick={() => handleRegister({ email, password, name, city, surname })} style={{ backgroundColor: '#009EE4', сolor: '#ffffff' }}>Зарегистрироваться</S.ModalButtonSignap>
                     </S.ModalFormLogin>
-                </S.ModalBlock>}
+                </S.ModalBlock >}
 
         </>
 

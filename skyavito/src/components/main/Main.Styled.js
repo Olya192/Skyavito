@@ -5,7 +5,7 @@ export const MainContainer = styled.div`
   margin: 0 auto;
   padding: 52px 10px 37px;
   @media screen and (max-width: 590px) {
-    padding: 85px 10px 84px;
+    padding: 30px 24px 20px 18px;
   }
 `
 export const MainH2 = styled.h2`
@@ -20,26 +20,17 @@ export const MainH2 = styled.h2`
   border-left: 2px solid #0080C1;
 }
 @media screen and (max-width: 590px) {
-    font-size: 24px;
+  font-size: 24px;
     line-height: 29px;
     color: #000000;
     margin-bottom: 20px;
     text-align: center;
     position: relative;
-    &::before {
-    content: "";
-    display: block;
-    width: 12px;
-    height: 12px;
-    background-color: transparent;
-    -webkit-transform: rotate(-45deg);
-            transform: rotate(-45deg);
-    position: absolute;
-    top: 9px;
-    left: 13px;
-    cursor: pointer;
-  }
-  }
+    margin-top: 65px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+     }
 `
 
 export const MainContent = styled.div`
@@ -75,9 +66,7 @@ export const ContentCards = styled.div`
   scrollbar-width: thin;
   scrollbar-width: 0px;
   height: 922px;
- 
-
-  &::-webkit-scrollbar {
+   &::-webkit-scrollbar {
   width: 0px;
   background-color: #009EE4;
 }
@@ -90,12 +79,13 @@ export const ContentCards = styled.div`
     display: grid;
     -ms-grid-columns: repeat(3, 270px);
         grid-template-columns: repeat(3, 270px);
+        height: -webkit-fill-available;
  }
  @media screen and (max-width: 890px) {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: repeat(2, 270px);
-        grid-template-columns: repeat(2, 270px);
+    -ms-grid-columns: repeat(2, 137px);
+        grid-template-columns: repeat(2, 137px);
 }
   @media screen and (max-width: 590px) {
     display: -ms-grid;
@@ -119,12 +109,9 @@ export const ContentCards = styled.div`
   @media screen and (max-width: 330px) {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: repeat(2, 160px);
+    -ms-grid-columns: repeat(2, 137px);
         grid-template-columns: repeat(2, 137px);
-
-        margin-top: 100px;
-        gap: 50px
-    
+     
   }
 
 `
