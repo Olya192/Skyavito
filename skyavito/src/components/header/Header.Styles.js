@@ -19,6 +19,9 @@ max-width: 1178px;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: end;
+          @media screen and (max-width: 590px) {
+   display:none;
+  }
  `
 export const Button = styled.button`
 width: 224px;
@@ -31,4 +34,7 @@ width: 224px;
   line-height: 1;
 &:hover{background: #0080c1;
   border: 1px solid #FFFFFF;} 
+  @media screen and (max-width: 590px) {
+   display:none;
+  }
 `

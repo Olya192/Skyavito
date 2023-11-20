@@ -12,6 +12,7 @@ font-style: normal;
     line-height: 29px;
     color: #000000;
     margin-bottom: 20px;
+    margin-left: 30px;
   }
 `
 
@@ -41,6 +42,7 @@ export const ProfileTitle = styled.h3`
   @media screen and (max-width: 620px) {
     font-size: 18px;
     line-height: 1;
+    margin-left: 30px;
   }
 `
 

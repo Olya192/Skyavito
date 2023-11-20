@@ -5,6 +5,7 @@ import * as S from './SellerProfile.Styled'
 import { useSelector } from "react-redux"
 import { getSelectList } from "../../store/selectors/AdsSelectors"
 import { getCards } from "../../api"
+import { Container } from "../container/Container"
 
 export const SellerProfile = () => {
 
@@ -19,28 +20,29 @@ export const SellerProfile = () => {
             })
     }, [])
 
-console.log(sellerCards)
+    console.log(sellerCards)
 
 
 
     return (
-        <S.Seller>
-            <S.MainH2>Профиль продавца</S.MainH2>
+        <Container>
+            <S.Seller>
+                <S.MainH2>Профиль продавца</S.MainH2>
 
-            <SellerUser card={selcard} />
+                <SellerUser card={selcard} />
 
-            <S.MainTitle>
-                Товары продавца
-            </S.MainTitle>
+                <S.MainTitle>
+                    Товары продавца
+                </S.MainTitle>
 
-            <S.MainContent>
+                <S.MainContent>
 
-                <S.ContentCards>
-                    {sellerCards?.map((card, index) => (<CardsItem key={index} card={card} />))}
-                </S.ContentCards>
+                    <S.ContentCards>
+                        {sellerCards?.map((card, index) => (<CardsItem key={index} card={card} />))}
+                    </S.ContentCards>
 
-            </S.MainContent>
-        </S.Seller>
-
+                </S.MainContent>
+            </S.Seller>
+        </Container>
     )
 }

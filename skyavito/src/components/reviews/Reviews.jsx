@@ -21,6 +21,7 @@ export const Reviews = ({ handModal, open, comments, updateComments }) => {
 
     return (
         <S.ModalBlock style={{ visibility: open ? 'hidden' : 'visible' }}>
+             <S.Backdrop onClick={handModal} />
             <S.ModalContent>
                 <S.ModalTitle>Отзывы о товаре</S.ModalTitle>
                 <S.ModalClose>

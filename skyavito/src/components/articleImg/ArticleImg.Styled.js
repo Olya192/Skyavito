@@ -59,22 +59,7 @@ width: 100%;
         -ms-flex-pack: center;
             justify-content: center;
     position: relative;
-    &::before {
-    content: "";
-    display: block;
-    width: 23px;
-    height: 23px;
-    background-color: transparent;
-    border-top: 2px solid #000000;
-    border-left: 2px solid #000000;
-    -webkit-transform: rotate(-45deg);
-            transform: rotate(-45deg);
-    position: absolute;
-    top: 24px;
-    left: 32px;
-    cursor: pointer;
-  }
-  }
+      }
 `
 
 export const ArticleImg = styled.div`
@@ -82,6 +67,9 @@ export const ArticleImg = styled.div`
   height: 480px;
   background-color: #F0F0F0;
   margin: 0 5px;
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
   img {
   width: 100%;
   height: auto;
@@ -131,7 +119,7 @@ width: 88px;
   margin: 0 5px;
   img {
   width: 100%;
-  height: auto;
+  height: 88px;
   display: block;
   -o-object-fit: cover;
      object-fit: cover;
@@ -173,7 +161,8 @@ export const ArticleImgDeleteButton = styled.button`
  background-color: #009EE4;
  border: 1px solid #009EE4;
  border-radius: 6px;
- border: 1px solid #009EE4;ъ
+ border: 1px solid #009EE4;
+     width: 74px;
  &:hover{background: #0080c1;
   border: 1px solid #FFFFFF;} 
 `
@@ -181,6 +170,7 @@ export const ArticleImgDeleteButton = styled.button`
 export const ArticleImgDiv = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: center;
 
 `
 

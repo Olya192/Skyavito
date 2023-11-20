@@ -5,32 +5,45 @@ import { Main } from "./components/main/Main"
 import { Article } from "./components/article/Article"
 import { Profile } from "./components/profile/Profile"
 import { SellerProfile } from "./components/sellerProfile/SellerProfile"
+import { useEffect, useState } from "react"
 
 export const AppRoutes = () => {
+
+    const checkAuth = () => {
+          const token = localStorage.getItem("token");
+          return token;
+    };
+
+    useEffect(() => {
+        checkAuth();
+    }, []);
+
     return (
         <BrowserRouter>
             <Routes>
                 <Route element={
-                    <ProtectedRoute />}>
+                    <ProtectedRoute isAllowed={checkAuth} />}>
 
-                    <Route path="/"
-                        element={
-                            <Main />
-                        } />
-                    <Route path="/article/:id"
-                        element={
-                            <Article />
-                        } />
                     <Route path="/profile"
                         element={
                             <Profile />
                         } />
-                    <Route path="/seller-profile"
-                        element={
-                            <SellerProfile />
-                        } />
-
                 </Route>
+
+                <Route path="/"
+                    element={
+                        <Main />
+                    } />
+                <Route path="/article/:id"
+                    element={
+                        <Article />
+                    } />
+                <Route path="/seller-profile"
+                    element={
+                        <SellerProfile />
+                    } />
+
+
             </Routes>
         </BrowserRouter>
 

@@ -9,6 +9,7 @@ import { getSetCard, getSetCardComments } from "../../api"
 import { useEffect, useMemo, useState } from 'react'
 
 import { useNavigate, useParams } from "react-router-dom"
+import { Container } from "../container/Container"
 
 export const Article = () => {
     const navigate = useNavigate()
@@ -63,6 +64,7 @@ export const Article = () => {
 
 
     return (
+        <Container>
         <>
             <S.MainArtic>
                 <S.ArticContent>
@@ -90,7 +92,7 @@ export const Article = () => {
             <RedactArticle open={modalAds} card={card} handModalAds={handModalAds} />
 
         </>
-
+</Container>
     )
 
 

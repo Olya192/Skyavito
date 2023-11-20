@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import * as S from './ProfileForm.Styled'
 import { postNewUserInfo, putUserPassword } from '../../api';
 
-export const ProfileForm = ({ user }) => {
+export const ProfileForm = ({ user, updateUserCard }) => {
 
     const [name, setName] = useState(user.name);
     const [surname, setSurname] = useState(user.surname);
@@ -24,7 +24,10 @@ export const ProfileForm = ({ user }) => {
         } else return true
     }, [passwordOne, passwordTwo])
 
-
+    function validateTel(phone) {
+        var re = /^[+]\d{0,12}$/;
+        return re.test(phone);
+    }
 
 
     const handleUserInfo = async () => {
@@ -32,6 +35,7 @@ export const ProfileForm = ({ user }) => {
             console.log('Старт');
             const UserInfo = await postNewUserInfo(phone, name, city, surname)
             localStorage.setItem("user", JSON.stringify(UserInfo))
+            updateUserCard()
             console.log('Все ок');
         } catch (error) {
             setError(error?.message)
@@ -84,7 +88,9 @@ export const ProfileForm = ({ user }) => {
                     <S.SettingsInput id="settings-phone" name="phone" type="tel" placeholder="+79161234567"
                         value={phone}
                         onChange={(event) => {
-                            setPhone(event.target.value);
+                            if (event.target.value === '' || validateTel(event.target.value)) {
+                                setPhone(event.target.value)
+                            };
                         }} />
                 </S.SettingsDiv>
                 <S.SettingsButton id="settings-btn" disabled={save} onClick={() => handleUserInfo()} >Сохранить</S.SettingsButton>
@@ -112,5 +118,5 @@ export const ProfileForm = ({ user }) => {
             </S.SettingsForm>
         </S.SettingsRight>
     )
-   
+
 }

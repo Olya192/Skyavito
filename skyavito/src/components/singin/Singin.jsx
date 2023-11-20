@@ -18,7 +18,23 @@ export const Singing = ({ handModal, open }) => {
 
 
 
+    function validateEmail(email) {
+        var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    }
+
+
+
     const handleLogin = async () => {
+
+        if (!validateEmail(email)) {
+            setError("Укажите почту")
+            return
+        }
+        if (!email || !password) {
+            setError("Укажите почту/пароль")
+            return
+        }
         try {
             console.log('Старт');
             const token = await postAuth(email, password)
@@ -35,6 +51,10 @@ export const Singing = ({ handModal, open }) => {
 
     const handleRegister = async () => {
 
+        if (!validateEmail(email)) {
+            setError("Укажите почту")
+            return
+        }
         if (!email || !password) {
             setError("Укажите почту/пароль")
             return
@@ -44,6 +64,7 @@ export const Singing = ({ handModal, open }) => {
             return
         }
         try {
+            setError(null)
             const newUser = await postRegist(email, password, name, city, surname);
             const token = await postAuth(email, password)
             localStorage.setItem("tokenRefresh", token.refresh_token)
@@ -55,6 +76,9 @@ export const Singing = ({ handModal, open }) => {
             setError(error?.message)
         }
     };
+
+
+
 
     return (
 
@@ -82,13 +106,14 @@ export const Singing = ({ handModal, open }) => {
                             onChange={(event) => {
                                 setPassword(event.target.value);
                             }} />
-                        <S.ModalButtonEnter id="btnEnter" onClick={() => handleLogin({ email, password })}> <Link to='/'>Войти</Link> </S.ModalButtonEnter>
-                        <S.ModalButtonSignap id="btnSignUp" onClick={handReg}><Link to='/'>Зарегистрироваться</Link> </S.ModalButtonSignap>
+                        <p>  {error ? `${error}` : ''}  </p>
+                        <S.ModalButtonEnter id="btnEnter" onClick={() => handleLogin({ email, password })}> Войти </S.ModalButtonEnter>
+                        <S.ModalButtonSignap id="btnSignUp" onClick={handReg}>Зарегистрироваться </S.ModalButtonSignap>
                     </S.ModalFormLogin>
                 </S.ModalBlock >
                 :
                 <S.ModalBlock style={{ visibility: open ? 'hidden' : 'visible' }} >
-                   <S.Backdrop onClick={handModal} />
+                    <S.Backdrop onClick={handModal} />
                     <S.ModalFormLogin id="formLogUp" action="#" onSubmit={(e) => e.preventDefault()}>
                         <S.ModalLogo>
                             <img src="../img/logo_modal.png" alt="logo" />
@@ -123,9 +148,10 @@ export const Singing = ({ handModal, open }) => {
                             onChange={(event) => {
                                 setCity(event.target.value);
                             }} />
-                        <S.ModalButtonSignap id="SignUpEnter" onClick={() => handleRegister({ email, password, name, city, surname })}><Link to='/'>Зарегистрироваться</Link> </S.ModalButtonSignap>
+                        <p>  {error ? `${error}` : ''}  </p>
+                        <S.ModalButtonSignap id="SignUpEnter" onClick={() => handleRegister({ email, password, name, city, surname })} style={{ backgroundColor: '#009EE4', сolor: '#ffffff' }}>Зарегистрироваться</S.ModalButtonSignap>
                     </S.ModalFormLogin>
-                </S.ModalBlock>}
+                </S.ModalBlock >}
 
         </>
 

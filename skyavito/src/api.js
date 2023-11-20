@@ -45,10 +45,13 @@ export async function postAuth(email, password) {
   })
   if (!response.ok) {
     const error = await response.json()
-    if (error?.detail) {
-      throw new Error(error.detail)
+    if (error?.detail === 'Incorrect email') {
+      throw new Error('Пользователь с таким email не существует')
     }
-    console.log('кринж')
+    if (error?.detail === 'Incorrect password') {
+      throw new Error('Неправильно введен пароль')
+    }
+    throw new Error(error?.message)
   }
 
   const user = await response.json()
@@ -78,6 +81,10 @@ export async function postRegist(email, password, name, city, surname) {
     if (error?.password) {
       throw new Error(error.password[0])
     }
+    if (error?.message === 'Database Error') {
+      throw new Error('Пользователь с таким email уже существует')
+    }
+    throw new Error(error?.message)
   }
 
   const user = await response.json()
