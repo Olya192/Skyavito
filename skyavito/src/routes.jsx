@@ -7,30 +7,36 @@ import { Profile } from "./components/profile/Profile"
 import { SellerProfile } from "./components/sellerProfile/SellerProfile"
 
 export const AppRoutes = () => {
+
+    // const token = localStorage.getItem('token')
+    const token = true
+
     return (
         <BrowserRouter>
             <Routes>
                 <Route element={
-                    <ProtectedRoute />}>
+                    <ProtectedRoute isAllowed={token} />}>
 
-                    <Route path="/"
-                        element={
-                            <Main />
-                        } />
-                    <Route path="/article/:id"
-                        element={
-                            <Article />
-                        } />
                     <Route path="/profile"
                         element={
                             <Profile />
                         } />
-                    <Route path="/seller-profile"
-                        element={
-                            <SellerProfile />
-                        } />
-
                 </Route>
+
+                <Route path="/"
+                    element={
+                        <Main />
+                    } />
+                <Route path="/article/:id"
+                    element={
+                        <Article />
+                    } />
+                <Route path="/seller-profile"
+                    element={
+                        <SellerProfile />
+                    } />
+
+
             </Routes>
         </BrowserRouter>
 

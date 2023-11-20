@@ -7,6 +7,7 @@ import { getAdsList, getSearchList } from "../../store/selectors/AdsSelectors"
 import { setSelectAds } from "../../store/actions/creators/adsCreators"
 import { useDispatch } from 'react-redux'
 import { useState } from "react"
+import { Container } from "../container/Container"
 
 export function Main() {
 
@@ -16,19 +17,20 @@ export function Main() {
 
 
     return (
-        <S.MainContainer>
+        <Container>
+            <S.MainContainer>
 
-            <S.MainH2>Объявления</S.MainH2>
+                <S.MainH2>Объявления</S.MainH2>
 
-            <S.MainContent>
+                <S.MainContent>
 
-                <S.ContentCards >
-                    {searchedCards?.map((card, index) => (<CardsItem key={index} card={card} />))}
-                </S.ContentCards>
-            </S.MainContent>
+                    <S.ContentCards >
+                        {searchedCards?.map((card, index) => (<CardsItem key={index} card={card} />))}
+                    </S.ContentCards>
+                </S.MainContent>
 
-        </S.MainContainer>
-
+            </S.MainContainer>
+        </Container>
 
     )
 
