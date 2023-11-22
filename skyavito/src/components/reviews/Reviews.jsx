@@ -1,22 +1,25 @@
 import { ReviewsPost } from "./ReviewsPost"
 import * as S from './Reviews.Styled'
-import { useState } from "react"
-import { getSetCardComments, postNewCardComments } from "../../api"
-import { useSelector } from "react-redux"
-import { getSelectList } from "../../store/selectors/AdsSelectors"
+import { useMemo, useState } from "react"
+import { postNewCardComments } from "../../api"
 
-export const Reviews = ({ handModal, open, comments, updateComments }) => {
 
-    const [text, setText] = useState()
-    const card = useSelector(getSelectList)
-    const user = localStorage.getItem("user") || ''
+export const Reviews = ({ handModal, open, comments, updateComments, cardId }) => {
+
+    const [text, setText] = useState('')
+      const user = localStorage.getItem("user") || ''
 
     const handleNewComments = () => {
-        postNewCardComments(card.id, text)
+        postNewCardComments(cardId, text)
             .then(() => updateComments())
-
+            .then(() => setText(''))
     }
 
+    const comment = useMemo(() => {
+            if (text !== '') {
+            return false
+        } else return true
+    }, [text])
 
 
     return (
@@ -39,7 +42,7 @@ export const Reviews = ({ handModal, open, comments, updateComments }) => {
                                         setText(event.target.value);
                                     }}></S.FormNewArtTextarea>
                             </S.FormNewArtBlock>
-                            <S.FormNewArtButton id="btnPublish" onClick={handleNewComments}>Опубликовать</S.FormNewArtButton>
+                            <S.FormNewArtButton id="btnPublish" onClick={handleNewComments} disabled={comment}>Опубликовать</S.FormNewArtButton>
                         </S.ModalFormNewArt>
 
                         : <></>

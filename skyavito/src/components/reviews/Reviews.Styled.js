@@ -272,9 +272,12 @@ export const FormNewArtButton = styled.button`
   font-size: 16px;
   line-height: 24px;
   color: #FFFFFF;
+  background-color: #009EE4;
   &:hover {
   background-color: #0080C1;
 }
+${(props) => props.disabled && ` background-color: #d9d9d9; 
+  border-color: #d9d9d9`};
   @media screen and (max-width: 600px) {
     margin-top: 0px;
     width: 100%;

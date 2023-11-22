@@ -3,7 +3,7 @@ import * as S from './MainHeader.Styled'
 import { useNavigate } from 'react-router-dom'
 import { useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getAdsList, getSearchList } from '../../store/selectors/AdsSelectors'
+import { getAdsList } from '../../store/selectors/AdsSelectors'
 import { setSearchAds } from '../../store/actions/creators/adsCreators'
 
 export function MainHeader() {

@@ -66,20 +66,27 @@ export const CardTitle = styled.h3`
 `
 
 export const CardPrise = styled.p`
-   font-size: 16px;
-    line-height: 24px;
+   font-size: 22px;
+    line-height: 33px;
+    font-weight: 500;
+    margin :0;
 `
 export const CardPlase = styled.p`
    font-size: 12px;
     line-height: 16px;
     color: #5F5F5F;
+    margin :0;
 `
 export const CardDate = styled.p`
-    font-size: 16px;
-  line-height: 21px;
+    font-size: 12px;
+    line-height: 16px;
   color: #5F5F5F;
+  margin :0;
 `
 
 export const CardText = styled.div`
     padding-left: 10px;
+       display: flex;
+    flex-direction: column;
+    gap: 10px;
 `

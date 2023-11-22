@@ -4,9 +4,7 @@ export const INITIAL_STATE = {
     adsList: [],
     selectAds: {},
     searchAds: [],
-    modalAds: false,
-    commentAds: false
-}
+  }
 
 
 export function adsReducer(state = INITIAL_STATE, action) {
@@ -37,12 +35,6 @@ export function adsReducer(state = INITIAL_STATE, action) {
                 commentAds: action.payload
             }
 
-        case ADS_TYPE.SET_MODAL_ADS:
-
-            return {
-                ...state,
-                modalAds: action.payload
-            }
 
         default:
             return state;
