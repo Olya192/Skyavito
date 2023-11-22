@@ -19,7 +19,7 @@ export const CardsItem = ({ card }) => {
                      <S.CardTitle>{card?.title}</S.CardTitle>
                     </Link>
                     <S.CardPrise>{card?.price} ₽</S.CardPrise>
-                    <S.CardPlase>{card?.city}</S.CardPlase>
+                    <S.CardPlase>{card?.user?.city}</S.CardPlase>
                     <S.CardDate>{new Date(card?.created_on).toLocaleDateString()}</S.CardDate>
                 </S.CardText>
             </S.CardsCard>

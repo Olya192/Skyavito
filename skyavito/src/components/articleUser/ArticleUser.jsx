@@ -1,7 +1,7 @@
 import * as S from './ArticleUser.Styled'
 import img from '../../img/photo_2023-11-10_21-58-33.jpg'
 import { useNavigate } from 'react-router-dom'
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { deleteUserAds, getCards } from '../../api'
 import { useDispatch } from 'react-redux'
 import { setAds } from '../../store/actions/creators/adsCreators'

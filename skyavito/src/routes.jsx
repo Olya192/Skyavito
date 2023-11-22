@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { Container } from "./components/container/Container"
 import { ProtectedRoute } from "./components/ProtectedRoute/ProtedRouter"
 import { Main } from "./components/main/Main"
 import { Article } from "./components/article/Article"

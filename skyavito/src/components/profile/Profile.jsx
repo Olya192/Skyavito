@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import { CardsItem } from "../cards/CardsItem"
-import { cards } from "../main/cards"
 import { UserProfile } from "../userProfile/UserProfile"
 import * as S from './Prifile.styled'
 import { getCardsUser } from "../../api"
