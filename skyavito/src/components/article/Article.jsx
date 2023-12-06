@@ -16,6 +16,9 @@ export const Article = () => {
     const [myAds, setMyAds] = useState(false)
     const [card, setCard] = useState({})
 
+
+// test
+
     const [modal, setModal] = useState(true)
     const [comments, setComments] = useState(null)
     const [modalAds, setModalAds] = useState(true)
