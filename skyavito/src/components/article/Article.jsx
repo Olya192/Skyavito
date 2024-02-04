@@ -6,6 +6,7 @@ import { Reviews } from "../reviews/Reviews"
 import { getSetCard, getSetCardComments } from "../../api"
 import { useEffect, useState } from 'react'
 
+
 import { useNavigate, useParams } from "react-router-dom"
 import { Container } from "../container/Container"
 
